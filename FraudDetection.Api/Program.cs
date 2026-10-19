@@ -7,6 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Регистрируем наш движок правил
+builder.Services.AddScoped<FraudDetection.Core.Services.RuleEngine>();
+
+builder.Services.AddControllers();
+
 builder.Services.AddControllers();
 // Добавляем Swagger для тестирования API через браузер
 builder.Services.AddEndpointsApiExplorer();

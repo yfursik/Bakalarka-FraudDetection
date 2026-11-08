@@ -7,9 +7,13 @@ public class Transaction
     public string Currency { get; set; } = string.Empty;
     public string CardNumberMasked { get; set; } = string.Empty;
     public string IpAddress { get; set; } = string.Empty;
+    public string Country { get; set; } = string.Empty; 
     public DateTime Timestamp { get; set; }
     
-    // Результаты оценки риска
+    // --- Поля, которые просит TransactionsController ---
+    public string Status { get; set; } = string.Empty; 
+    public DateTime CreatedAtUtc { get; set; }
+
     public decimal RiskScore { get; set; }
     public bool IsBlocked { get; set; }
 }
